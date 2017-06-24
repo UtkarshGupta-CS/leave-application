@@ -1,0 +1,23 @@
+{
+  "name": "leave-application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UtkarshGupta-CS/leave-application.git"
+  },
+  "author": "Utkarsh Gupta <utgupta1997@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UtkarshGupta-CS/leave-application/issues"
+  },
+  "homepage": "https://github.com/UtkarshGupta-CS/leave-application#readme",
+  "dependencies": {
+    "body-parser": "1.17.2",
+    "express": "4.15.3"
+  }
+}
