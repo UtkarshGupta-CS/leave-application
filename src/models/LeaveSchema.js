@@ -23,12 +23,10 @@ let LeaveSchema = new Schema({
   }, 
   requestedBy: {
     type: String,
-    required: true
-  },/*
+  },
   requestedAt: {
     type: Date,
-    required: true
-  },*/
+  },
   approvalStatus: {
     type: String,
     enum: ["Approved", "Not Approved", "Rejected"],

@@ -15,6 +15,7 @@ module.exports = router => {
     ses = req.session;
 
     res.send(ses);
+    console.log(req.headers);
   });
 
   router.post("/user", (req, res) => {
@@ -83,13 +84,16 @@ module.exports = router => {
       });
     } else {
       ses = req.session;
-      console.log(ses)
+      console.log(ses);
+
       let leaveEntry = new Leave({
         startDate: req.body.startDate,
         endDate: req.body.endDate,
         reason: req.body.reason,
         leaveType: req.body.leaveType,
-        requestedBy: ses.username
+        requestedBy: ses.username,
+        requestedAt: new Date(),
+        approvalStatus: "Not Approved"
       });
 
       leaveEntry.save(err => {
@@ -103,10 +107,21 @@ module.exports = router => {
   });
 
   router.get("/all", (req, res) => {
-    console.log(req.body);
-
-    Leave.find().then(leave => {
-      res.json(leave);
+    const username = decodeURI(req.query.username);
+    console.log(username);
+    User.findOne({ username: username }).then(user => {
+      console.log(user);
+      if (user && user.role === "Manager") {
+        Leave.find().then(leave => {
+          res.json(leave);
+        });
+      } else if (user && user.role === "Employee") {
+        Leave.find({ requestedBy: username }).then(leave => {
+          res.json(leave);
+        });
+      } else {
+        res.send("username does not exist");
+      }
     });
   });
 };
