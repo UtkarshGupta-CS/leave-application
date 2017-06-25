@@ -1,0 +1,30 @@
+{
+  "firstName": "Utkarsh",
+  "lastName": "Gupta",
+  "role": "Employee",
+  "username": "utk123",
+  "email": "utk123@gmail.com"
+}
+
+{
+  "firstName": "Rishabh",
+  "lastName": "Garg",
+  "role": "Employee",
+  "username": "rishabh123",
+  "email": "rishabh123@gmail.com"
+}
+
+{
+  "firstName": "Jaspreet",
+  "lastName": "Singh",
+  "role": "Manager",
+  "username": "jassy321",
+  "email": "jassy321@gmail.com"
+}
+
+{
+  "startDate": "2017-06-06",
+  "endDate": "2017-06-06",
+  "leaveType": "Type1",
+  "reason": "Trip to Manali"
+}

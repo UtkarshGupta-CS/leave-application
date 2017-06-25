@@ -20,18 +20,18 @@ let LeaveSchema = new Schema({
   reason: {
     type: String,
     required: true
-  }, /*
-  requestBy: {
+  }, 
+  requestedBy: {
     type: String,
     required: true
-  },
+  },/*
   requestedAt: {
     type: Date,
     required: true
   },*/
   approvalStatus: {
     type: String,
-    enum: ["Approved", "Not Approved"],
+    enum: ["Approved", "Not Approved", "Rejected"],
   },
   approvedAt: {
     type: Date,

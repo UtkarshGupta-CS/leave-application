@@ -2,8 +2,22 @@ const User = require("./models/UserSchema");
 const Leave = require("./models/LeaveSchema");
 
 module.exports = router => {
+  let ses;
+
   router.post("/", (req, res) => {
-    let user = new User();
+    ses = req.session;
+
+    ses.username = req.body.username;
+    res.send(ses);
+  });
+
+  router.get("/crap", (req, res) => {
+    ses = req.session;
+
+    res.send(ses);
+  });
+
+  router.post("/user", (req, res) => {
     console.log(req.body);
 
     if (
@@ -24,20 +38,26 @@ module.exports = router => {
           "Ensure that username,email, firstName, lastName, role are provided"
       });
     } else {
-      user.firstName = req.body.firstName;
-      user.lastName = req.body.lastName;
-      user.role = req.body.role;
-      user.username = req.body.username;
-      user.email = req.body.email;
+      User.findOne({ firstName: req.body.firstName }).then(user => {
+        if (!user) {
+          let userEntry = new User({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            role: req.body.role,
+            username: req.body.username,
+            email: req.body.email
+          });
 
-      user.save(err => {
-        if (err) {
+          userEntry.save(err => {
+            if (!err) {
+              res.json({ success: true, message: "User Created" });
+            }
+          });
+        } else {
           res.json({
             success: false,
             message: "Username or email already exist"
           });
-        } else {
-          res.json({ success: true, message: "User Created" });
         }
       });
     }
@@ -62,12 +82,17 @@ module.exports = router => {
         message: "Ensure startDate, endDate, reason, leaveType are provided"
       });
     } else {
-      leave.startDate = req.body.startDate;
-      leave.endDate = req.body.endDate;
-      leave.reason = req.body.reason;
-      leave.leaveType = req.body.leaveType;
+      ses = req.session;
+      console.log(ses)
+      let leaveEntry = new Leave({
+        startDate: req.body.startDate,
+        endDate: req.body.endDate,
+        reason: req.body.reason,
+        leaveType: req.body.leaveType,
+        requestedBy: ses.username
+      });
 
-      leave.save(err => {
+      leaveEntry.save(err => {
         if (!err) {
           res.json({ success: true, message: "Leave Added" });
         } else {
@@ -79,7 +104,6 @@ module.exports = router => {
 
   router.get("/all", (req, res) => {
     console.log(req.body);
-    let leaves = new Leave();
 
     Leave.find().then(leave => {
       res.json(leave);
