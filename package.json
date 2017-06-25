@@ -19,6 +19,7 @@
   "homepage": "https://github.com/UtkarshGupta-CS/leave-application#readme",
   "dependencies": {
     "body-parser": "1.17.2",
-    "express": "4.15.3"
+    "express": "4.15.3",
+    "mongoose": "4.10.8"
   }
 }
