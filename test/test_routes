@@ -1,0 +1,9 @@
+http://localhost:3000/user
+
+http://localhost:3000/  # for session creating
+
+http://localhost:3000/leave
+
+http://localhost:3000/all?username=jassy321
+
+http://localhost:3000/approving?username=jassy321
