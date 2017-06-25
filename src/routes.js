@@ -70,17 +70,19 @@ module.exports = router => {
       leave.save(err => {
         if (!err) {
           res.json({ success: true, message: "Leave Added" });
-        }else {
-          res.json(err)
+        } else {
+          res.json(err);
         }
       });
     }
   });
 
-  router.get('/all', (req, res) => {
+  router.get("/all", (req, res) => {
     console.log(req.body);
-    let leave = new Leave();
+    let leaves = new Leave();
 
-    res.render(leave.find())
-  })
+    Leave.find().then(leave => {
+      res.json(leave);
+    });
+  });
 };

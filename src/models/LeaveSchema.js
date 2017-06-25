@@ -32,10 +32,10 @@ let LeaveSchema = new Schema({
   approvalStatus: {
     type: String,
     enum: ["Approved", "Not Approved"],
-  }/*,
+  },
   approvedAt: {
     type: Date,
-  }*/
+  }
 });
 
 module.exports = mongoose.model("Leave", LeaveSchema);
