@@ -3,7 +3,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-let StockSchema = new Schema({
+let LeaveSchema = new Schema({
   StartDate: {
     type: Date,
     min: Date("1970-01-01"),
@@ -43,4 +43,4 @@ let StockSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model("Leave", StockSchema);
+module.exports = mongoose.model("Leave", LeaveSchema);

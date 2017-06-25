@@ -3,7 +3,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-let StockSchema = new Schema({
+let UserSchema = new Schema({
   FirstName: {
     type: String,
     required: true
@@ -26,4 +26,4 @@ let StockSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model("User", StockSchema);
+module.exports = mongoose.model("User", UserSchema);
