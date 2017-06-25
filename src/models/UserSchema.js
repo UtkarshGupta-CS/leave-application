@@ -4,42 +4,25 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 let StockSchema = new Schema({
-  StartDate: {
-    type: Date,
-    min: Date("1970-01-01"),
-    required: true
-  },
-  EndDate: {
-    type: Date,
-    min: Date("1970-01-01"),
-    required: true
-  },
-  LeaveType: {
-    type: String,
-    enum: ["Formal", "Informal"],
-    required: true
-  },
-  Reason: {
+  FirstName: {
     type: String,
     required: true
   },
-  RequestBy: {
+  LastName: {
     type: String,
     required: true
   },
-  RequestedAt: {
-    type: Date,
-    min: Date("1970-01-01"),
-    required: true
-  },
-  ApprovalStatus: {
+  Email: {
     type: String,
-    enum: ["Approved", "Not Approved"],
     required: true
   },
-  ApprovedAt: {
-    type: Date,
-    min: Date("1970-01-01")
+  Role: {
+    type: String,
+    required: true
+  },
+  Username: {
+    type: String,
+    required: true
   }
 });
 
