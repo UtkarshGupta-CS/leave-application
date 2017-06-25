@@ -1,3 +1,5 @@
+// Sample Users 
+
 {
   "firstName": "Utkarsh",
   "lastName": "Gupta",
@@ -22,9 +24,30 @@
   "email": "jassy321@gmail.com"
 }
 
+// To create leave request
+
 {
   "startDate": "2017-06-06",
   "endDate": "2017-06-06",
   "leaveType": "Type1",
   "reason": "Trip to Manali"
+}
+
+{
+  "startDate": "2017-06-06",
+  "endDate": "2017-06-09",
+  "leaveType": "Type1",
+  "reason": "Trip to Goa"
+}
+
+// For session management
+{
+	"username": "jassy321"
+}
+
+// for approving particular leave
+
+{
+	"id": "594fecd1d89e35cb6810081b",
+  "approvalStatus": "Approved"
 }

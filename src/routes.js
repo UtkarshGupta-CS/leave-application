@@ -108,7 +108,7 @@ module.exports = router => {
 
   router.get("/all", (req, res) => {
     const username = decodeURI(req.query.username);
-    console.log(username);
+
     User.findOne({ username: username }).then(user => {
       console.log(user);
       if (user && user.role === "Manager") {
@@ -121,6 +121,31 @@ module.exports = router => {
         });
       } else {
         res.send("username does not exist");
+      }
+    });
+  });
+
+  router.post("/approving", (req, res) => {
+    const username = decodeURI(req.query.username);
+
+    User.findOne({ username: username }).then(user => {
+      console.log(user);
+      if (user && user.role === "Manager") {
+        Leave.updateOne(
+          { _id: req.body.id },
+          {
+            approvalStatus: req.body.approvalStatus
+          },
+          { upsert: true }
+        )
+          .then(() => {
+            res.send("approved");
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      } else {
+        res.send("bad request");
       }
     });
   });
