@@ -4,23 +4,23 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 let UserSchema = new Schema({
-  FirstName: {
+  firstName: {
     type: String,
     required: true
   },
-  LastName: {
+  lastName: {
     type: String,
     required: true
   },
-  Email: {
+  email: {
     type: String,
     required: true
   },
-  Role: {
+  role: {
     type: String,
     required: true
   },
-  Username: {
+  username: {
     type: String,
     required: true
   }

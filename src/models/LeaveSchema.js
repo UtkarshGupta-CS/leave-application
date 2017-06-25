@@ -4,43 +4,38 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 let LeaveSchema = new Schema({
-  StartDate: {
+  startDate: {
     type: Date,
-    min: Date("1970-01-01"),
     required: true
   },
-  EndDate: {
+  endDate: {
     type: Date,
-    min: Date("1970-01-01"),
     required: true
   },
-  LeaveType: {
+  leaveType: {
     type: String,
-    enum: ["Formal", "Informal"],
+    enum: ["Type1", "Type2", "Type3"],
     required: true
   },
-  Reason: {
+  reason: {
     type: String,
     required: true
-  },
-  RequestBy: {
+  }, /*
+  requestBy: {
     type: String,
     required: true
   },
-  RequestedAt: {
+  requestedAt: {
     type: Date,
-    min: Date("1970-01-01"),
     required: true
-  },
-  ApprovalStatus: {
+  },*/
+  approvalStatus: {
     type: String,
     enum: ["Approved", "Not Approved"],
-    required: true
-  },
-  ApprovedAt: {
+  }/*,
+  approvedAt: {
     type: Date,
-    min: Date("1970-01-01")
-  }
+  }*/
 });
 
 module.exports = mongoose.model("Leave", LeaveSchema);
