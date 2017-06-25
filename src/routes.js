@@ -125,7 +125,7 @@ module.exports = router => {
     });
   });
 
-  router.post("/approving", (req, res) => {
+  router.put("/approving", (req, res) => {
     const username = decodeURI(req.query.username);
 
     User.findOne({ username: username }).then(user => {
