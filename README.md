@@ -68,7 +68,7 @@ http://localhost:3000/approving
 ##### JSON Body
 ```
 {
-  
+
 	"id": "594fecd1d89e35cb6810081b",
   "approvalStatus": "Approved"
 }
@@ -79,6 +79,10 @@ http://localhost:3000/approving
 http://localhost:3000/logout
 ```
 
+### Heroku link
+```
+https://leave-application.herokuapp.com/
+```
 
 ## License
 
