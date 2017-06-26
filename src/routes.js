@@ -6,12 +6,20 @@ const Leave = require("./models/LeaveSchema");
 module.exports = router => {
   let ses;
 
+  /**
+   * Note: Session Starts from "/" route
+   */
+
   router.post("/", (req, res) => {
     ses = req.session;
 
     ses.username = req.body.username;
     res.send(ses);
   });
+
+  /**
+   * Note: Session detroyed from "/logout" route
+   */
 
   router.get("/logout", (req, res) => {
     req.session.destroy(err => {
@@ -20,6 +28,9 @@ module.exports = router => {
     });
   });
 
+  /**
+   * Note: To create new user
+   */
   router.post("/user", (req, res) => {
     console.log(req.body);
 
@@ -66,6 +77,10 @@ module.exports = router => {
     }
   });
 
+  /**
+   * Note: To create new Leave Request
+  */
+
   router.post("/leave", (req, res) => {
     let leave = new Leave();
     console.log(req.body);
@@ -85,7 +100,6 @@ module.exports = router => {
         message: "Ensure startDate, endDate, reason, leaveType are provided"
       });
     } else {
-      //
       ses = req.session;
 
       let leaveEntry = new Leave({
@@ -108,6 +122,10 @@ module.exports = router => {
     }
   });
 
+  /**
+   * Note: To see all of the leave request according to user 'Role'
+   */
+
   router.get("/all", (req, res) => {
     ses = req.session;
 
@@ -129,6 +147,10 @@ module.exports = router => {
       }
     });
   });
+
+  /**
+   * Note: To Approve or Reject outstanding leave request
+   */
 
   router.put("/approving", (req, res) => {
     ses = req.session;
