@@ -10,7 +10,7 @@ module.exports = router => {
    * Note: Session Starts from "/" route
    */
 
-  router.post("/", (req, res) => {
+  router.post("/login", (req, res) => {
     ses = req.session;
 
     ses.username = req.body.username;
