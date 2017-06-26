@@ -32,7 +32,6 @@ module.exports = router => {
    * Note: To create new user
    */
   router.post("/user", (req, res) => {
-    console.log(req.body);
 
     if (
       req.body.firstName === null ||
@@ -83,7 +82,6 @@ module.exports = router => {
 
   router.post("/leave", (req, res) => {
     let leave = new Leave();
-    console.log(req.body);
 
     if (
       req.body.startDate === null ||
