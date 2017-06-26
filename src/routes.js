@@ -13,11 +13,11 @@ module.exports = router => {
     res.send(ses);
   });
 
-  router.get("/crap", (req, res) => {
-    ses = req.session;
-
-    res.send(ses);
-    console.log(req.headers);
+  router.get("/logout", (req, res) => {
+    req.session.destroy(err => {
+      if (err) console.log(err);
+      else res.send("session detroyed");
+    });
   });
 
   router.post("/user", (req, res) => {
@@ -85,8 +85,8 @@ module.exports = router => {
         message: "Ensure startDate, endDate, reason, leaveType are provided"
       });
     } else {
+      //
       ses = req.session;
-      console.log(ses);
 
       let leaveEntry = new Leave({
         startDate: req.body.startDate,
@@ -109,7 +109,10 @@ module.exports = router => {
   });
 
   router.get("/all", (req, res) => {
-    const username = decodeURI(req.query.username);
+    ses = req.session;
+
+    // const username = decodeURI(req.query.username);
+    const username = ses.username;
 
     User.findOne({ username: username }).then(user => {
       console.log(user);
@@ -128,7 +131,11 @@ module.exports = router => {
   });
 
   router.put("/approving", (req, res) => {
-    const username = decodeURI(req.query.username);
+    ses = req.session;
+
+    // const username = decodeURI(req.query.username);
+
+    const username = ses.username;
 
     User.findOne({ username: username }).then(user => {
       console.log(user);
