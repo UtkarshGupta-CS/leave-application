@@ -136,7 +136,8 @@ module.exports = router => {
         Leave.updateOne(
           { _id: req.body.id },
           {
-            approvalStatus: req.body.approvalStatus
+            approvalStatus: req.body.approvalStatus,
+            approvedAt: new Date()
           },
           { upsert: true }
         )
