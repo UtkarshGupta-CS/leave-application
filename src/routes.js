@@ -52,7 +52,7 @@ module.exports = router => {
           "Ensure that username,email, firstName, lastName, role are provided"
       });
     } else {
-      User.findOne({ firstName: req.body.firstName }).then(user => {
+      User.findOne({ username: req.body.username }).then(user => {
         if (!user) {
           let userEntry = new User({
             firstName: req.body.firstName,
@@ -129,7 +129,6 @@ module.exports = router => {
   router.get("/all", (req, res) => {
     ses = req.session;
 
-    // const username = decodeURI(req.query.username);
     const username = ses.username;
 
     User.findOne({ username: username }).then(user => {
@@ -154,8 +153,6 @@ module.exports = router => {
 
   router.put("/approving", (req, res) => {
     ses = req.session;
-
-    // const username = decodeURI(req.query.username);
 
     const username = ses.username;
 
