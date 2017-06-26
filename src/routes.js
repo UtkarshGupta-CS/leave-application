@@ -1,3 +1,5 @@
+"use strict";
+
 const User = require("./models/UserSchema");
 const Leave = require("./models/LeaveSchema");
 
