@@ -35,6 +35,15 @@ http://localhost:3000/user
 ##### JSON Body
 ```
 {
+  "firstName": "Jaspreet",
+  "lastName": "Singh",
+  "role": "Manager",
+  "username": "jassy321",
+  "email": "jassy321@gmail.com"
+}
+```
+```
+{
   "firstName": "Utkarsh",
   "lastName": "Gupta",
   "role": "Employee",
